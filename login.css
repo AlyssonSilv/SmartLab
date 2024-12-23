@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-color: #EDEDED;
+    justify-content: center;
+    align-items: center;
+}
+
+#Caixa_central {
+    display: flex;
+    width: 70%;
+    height: 80vh;
+}
+
+body h2 {
+    height: 80px;
+    width: 18%;
+    font-family: "Inria Sans", sans-serif;
+    margin-left: 10%;
+    margin-top: 10%;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.Form {
+    width: 470px;
+    height: 386px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    font-family: "Inria Sans", sans-serif;
+    padding-left: 35px;
+    margin-left: 5%;
+    margin-top: 10%;
+    border-radius: 25px;
+}
+
+.labels {
+    margin-top: 40px;
+    width: 65px;
+}
+
+.inputs_txt {
+    width: 386px;
+    height: 35px;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+.Form a {
+    color: #89B6AB;
+    margin-top: 10px;
+}
+
+.btn {
+    width: 130px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    color: #FFFFFF;
+    background-color: #89B6AB;
+    margin-top: 10px;
+    margin-left: 60%;
+}

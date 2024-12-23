@@ -1,0 +1,54 @@
+@startuml  
+actor Cliente as C
+participant "Interface de Usuário\n(Página de Reserva)" as UI
+participant "Servidor PHP" as P
+database "Banco de Dados" as BD
+participant "Horários" as H
+participant "Ambientes" as A
+participant "Periféricos" as Pe
+
+== Fluxo inicial ==
+C -> UI : Acessa página de reserva
+UI -> P : Requisição inicial (GET)
+P -> BD : Consultar horários
+BD --> P : Lista de horários
+P -> BD : Consultar ambientes
+BD --> P : Lista de ambientes
+P -> BD : Consultar periféricos
+BD --> P : Lista de periféricos
+P --> UI : Exibe página com horários, ambientes e periféricos
+
+== Escolha de horários ==
+C -> UI : Seleciona horário (AJAX)
+UI -> P : Requisição de seleção de horário
+P -> BD : Verificar disponibilidade do horário
+BD --> P : Disponível/Indisponível
+P --> UI : Exibe resposta de disponibilidade
+
+== Escolha de ambientes ==
+C -> UI : Seleciona ambiente (AJAX)
+UI -> P : Requisição de seleção de ambiente
+P -> BD : Verificar disponibilidade do ambiente
+BD --> P : Disponível/Indisponível
+P --> UI : Exibe resposta de disponibilidade
+
+== Escolha de periféricos ==
+C -> UI : Seleciona periférico (AJAX)
+UI -> P : Requisição de seleção de periférico
+P --> UI : Exibe quantidade disponível
+
+== Confirmar reserva ==
+C -> UI : Confirma reserva (POST)
+UI -> P : Requisição de confirmação de reserva
+P -> BD : Verificar disponibilidade do horário
+BD --> P : Disponível/Indisponível
+P -> BD : Verificar disponibilidade do ambiente
+BD --> P : Disponível/Indisponível
+P -> BD : Verificar quantidade de periféricos
+BD --> P : Quantidade suficiente/insuficiente
+P -> BD : Inserir registro na tabela de reservas
+P -> BD : Atualizar quantidade de periféricos
+BD --> P : Confirmação de reserva
+P --> UI : Exibe confirmação de sucesso/erro
+
+@enduml
