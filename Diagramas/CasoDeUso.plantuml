@@ -1,0 +1,34 @@
+@startuml 
+left to right direction
+
+actor Usuario as U
+actor Administrador as A
+actor Visitante as V
+
+rectangle "Sistema de Reservas" {
+    (Cadastrar-se) as Cadastrar
+    (Fazer Login) as Login
+    (Editar Perfil) as EditarPerfil
+    (Inserir Reserva) as InserirReserva
+    (Cancelar Reserva) as CancelarReserva
+    (Verificar Disponibilidade) as VerificarDisponibilidade
+    (Listar Ambientes e Horários) as ListarAmbientes
+    (Gerenciar Reservas) as GerenciarReservas
+    (Logout) as Logout
+}
+
+V --> Cadastrar : "Opção disponível"
+V --> ListarAmbientes : "Consulta pública"
+
+U --> Login
+U --> EditarPerfil
+U --> InserirReserva
+U --> CancelarReserva
+U --> VerificarDisponibilidade
+U --> Logout
+
+A --> GerenciarReservas
+A --> EditarPerfil : "Alterar seus dados"
+A --> Logout
+
+@enduml

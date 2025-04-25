@@ -1,0 +1,51 @@
+@startuml 
+class Usuario {
+    - id: int
+    - nome: string
+    - email: string
+    - senha: string
+    - tipo: string
+    + autenticar(): boolean
+    + editarPerfil(nome, email, senha): boolean
+}
+
+class Reserva {
+    - id: int
+    - usuario_id: int
+    - ambiente_id: int
+    - horario_id: int
+    - status: string
+    + criarReserva(ambiente, horario): boolean
+    + cancelarReserva(): boolean
+}
+
+class Ambiente {
+    - id: int
+    - nome: string
+    - capacidade: int
+    - status: string
+    + verificarDisponibilidade(): boolean
+    + atualizarStatus(novoStatus): void
+}
+
+class Horario {
+    - id: int
+    - hora_inicio: datetime
+    - hora_fim: datetime
+    - disponibilidade: boolean
+    + reservarHorario(): boolean
+    + liberarHorario(): boolean
+}
+
+class Administrador {
+    - id: int
+    - nome: string
+    + gerenciarUsuarios()
+    + gerenciarReservas()
+}
+
+Usuario "1" --> "*" Reserva
+Reserva "1" --> "1" Ambiente
+Reserva "1" --> "1" Horario
+Administrador <|-- Usuario
+@enduml

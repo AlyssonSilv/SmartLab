@@ -1,0 +1,16 @@
+@startuml 
+start
+:Usuário solicita login;
+:Validar credenciais;
+if (Credenciais válidas?) then (Sim)
+    :Carregar informações do usuário;
+    if (Tipo de usuário = Administrador?) then (Sim)
+        :Acessar painel administrativo;
+    else (Não)
+        :Acessar painel do usuário;
+    endif
+else (Não)
+    :Exibir mensagem de erro;
+endif
+stop
+@enduml

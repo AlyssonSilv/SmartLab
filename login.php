@@ -21,7 +21,7 @@ if (isset($_POST['email']) || isset($_POST['senha'])) {
         $sql_code = "SELECT * FROM usuarios WHERE Email = '$email'";
         $sql_query = $conn->query($sql_code) or die("Falha na execução do código SQL: " . $conn->error);
 
-        if ($sql_query->num_rows == 1) {
+        if ($sql_query->num_rows === 1) {
             $usuarios = $sql_query->fetch_assoc();
 
             // Verifica a senha

@@ -1,0 +1,63 @@
+@startuml
+class Usuario {
+    - id: int
+    - nome: String
+    - email: String
+    - senha: String
+    + autenticar(email: String, senha: String): boolean
+    + reservar(data: Date, horario: String, idUsuario: int): Reserva
+    + cancelarReserva(id: int): boolean
+}
+
+class Reserva {
+    - id: int
+    - date: Date
+    - horario: String
+    - status: String
+    - idUsuario: int
+    + verificarDisponibilidade(data: Date, horario: String): boolean
+    + confirmarReserva(usuario: Usuario): boolean
+    + cancelarReserva(id: int): boolean
+}
+
+class Ambiente {
+    - tipo: String
+    - capacidade: int
+}
+
+class Horario {
+    - horaInicio: Time
+    - horaFim: Time
+}
+
+class Periferico {
+    - nome: String
+    - quantidade: int
+}
+
+class IRepositorio
+
+abstract class AbstractConexao {
+    - url: String
+    - usuario: String
+    - senha: String
+    + conectar(): Connection
+    + executarQuery(query: String): ResultSet
+}
+
+class ConexaoMySQL
+
+class bancodedados {
+    - driver: String
+    - conexao: Connection
+    + obterConexao(): AbstractConexao
+}
+
+Usuario "1" -- "*" Reserva : Realiza
+Reserva -- IRepositorio : Utiliza
+AbstractConexao <|-- ConexaoMySQL
+ConexaoMySQL -- bancodedados : conectar
+Reserva <|-- Ambiente
+Reserva <|-- Horario
+Reserva <|-- Periferico
+@enduml

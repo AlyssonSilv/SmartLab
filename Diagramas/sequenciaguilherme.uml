@@ -1,0 +1,20 @@
+@startuml
+actor Usuario as U
+participant "Interface Web" as IW
+participant "Servidor" as S
+participant "Banco de Dados" as BD
+
+U -> IW: Preenche dados de cadastro (nome, email, senha)
+IW -> S: Envia dados para validação
+S -> BD: Verifica se email já está registrado
+BD --> S: Retorna resultado da verificação
+alt Email já registrado
+    S -> IW: Retorna mensagem de erro (email já em uso)
+    IW -> U: Exibe mensagem de erro
+else Email não registrado
+    S -> BD: Salva os dados do usuário
+    BD --> S: Confirmação de cadastro salvo
+    S -> IW: Retorna sucesso no cadastro
+    IW -> U: Exibe mensagem de cadastro bem-sucedido
+end
+@enduml

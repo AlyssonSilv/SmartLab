@@ -1,0 +1,41 @@
+@startuml 
+package "Autenticação" {
+    class Cadastro
+    class Login
+    class Logout
+    class Usuario
+}
+
+package "Reservas" {
+    class InserirReserva
+    class CancelarReserva
+    class VerificarDisponibilidade
+    class Reserva
+}
+
+package "Listagem" {
+    class AmbienteListar
+    class HorarioListar
+    class Ambiente
+    class Horario
+}
+
+package "Gerenciamento" {
+    class Acoes
+    class Perfil
+    class EditarPerfil
+    class Administrador
+}
+
+package "Configuração" {
+    class Conexao
+    class Config
+}
+
+"Autenticação" --> "Reservas"
+"Reservas" --> "Listagem"
+"Gerenciamento" --> "Reservas"
+"Configuração" --> "Autenticação"
+"Configuração" --> "Reservas"
+"Configuração" --> "Listagem"
+@enduml

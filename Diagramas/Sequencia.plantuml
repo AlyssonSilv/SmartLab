@@ -1,0 +1,16 @@
+@startuml 
+actor Usuario
+participant "ReservaController" as ReservaCtrl
+participant "Conexao" as Conexao
+database "BancoDeDados" as BD
+
+Usuario -> ReservaCtrl: Solicitar reserva
+ReservaCtrl -> Conexao: Conectar ao banco
+Conexao -> BD: Verificar disponibilidade
+BD --> Conexao: Retorna disponibilidade
+ReservaCtrl -> Conexao: Inserir reserva
+Conexao -> BD: Gravar reserva
+BD --> Conexao: Confirmação de gravação
+Conexao --> ReservaCtrl: Confirmação
+ReservaCtrl --> Usuario: Mensagem de sucesso
+@enduml

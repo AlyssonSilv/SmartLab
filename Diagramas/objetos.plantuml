@@ -1,0 +1,21 @@
+@startuml
+object "Usuario: João Silva" as Usuario1
+object "Usuario: usuario1" as Usuario2
+object "Reserva: reserva1" as Reserva
+object "Ambiente: Sala de Reuniões" as Ambiente
+object "Periferico: Projetor" as Projetor
+object "Periferico: Lousa" as Lousa
+object "Horarios: 10:00 - 12:00" as Horarios
+object "Repositorio: repositorio" as Repositorio
+object "ConexaoMySQL: conexao" as Conexao
+object "bancodedados: banco" as Banco
+
+Usuario1 -- Reserva : Realiza
+Usuario2 -- Reserva : Realiza
+Reserva -- Ambiente : Utiliza
+Reserva -- Horarios : Utiliza
+Ambiente -- Projetor : Possui
+Ambiente -- Lousa : Possui
+Repositorio -- Conexao : Utiliza
+Conexao -- Banco : conectar
+@enduml

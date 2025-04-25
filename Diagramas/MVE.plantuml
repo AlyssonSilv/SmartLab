@@ -1,0 +1,11 @@
+@startuml 
+[*] --> Pendente
+
+Pendente --> Confirmada: Aprovar Reserva
+Pendente --> Cancelada: Cancelar Reserva
+
+Confirmada --> Cancelada: Cancelar Reserva
+Confirmada --> [*]: Finalizar
+
+Cancelada --> [*]
+@enduml

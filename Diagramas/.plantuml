@@ -1,0 +1,23 @@
+@startuml 
+actor "Usuário" as user
+participant "Browser" as browser
+participant "Servidor Web" as server
+participant "Banco de Dados" as db
+
+user -> browser : Preenche formulário de cadastro\n(nome, email, telefone, senha)
+browser -> server : Envia dados via POST
+server -> server : Verifica se os campos estão preenchidos\nSe inválido, retorna erro
+server -> server : Verifica requisitos da senha\nSe inválido, retorna erro
+server -> db : Verifica se o e-mail já está cadastrado
+db --> server : Retorna resultado da consulta
+alt E-mail já cadastrado
+    server -> browser : Retorna mensagem de erro
+else E-mail disponível
+    server -> db : Insere novo usuário no banco
+    alt Inserção bem-sucedida
+        server -> browser : Redireciona para a página de login
+    else Erro ao inserir no banco
+        server -> browser : Retorna mensagem de erro
+    end
+end
+@enduml

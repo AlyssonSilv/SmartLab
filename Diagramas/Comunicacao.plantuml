@@ -1,0 +1,13 @@
+ @startuml 
+actor Usuario
+participant InserirReserva
+participant Conexao
+database BancoDeDados
+
+Usuario --> InserirReserva : Solicitar reserva
+InserirReserva --> Conexao : Validar dados
+Conexao --> BancoDeDados : Verificar disponibilidade
+BancoDeDados --> Conexao : Disponível
+Conexao --> InserirReserva : Retornar sucesso
+InserirReserva --> Usuario : Reserva confirmada
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+[*] --> Inicio
+
+Inicio: Formulário de Cadastro
+Inicio --> PreenchendoDados: Usuário inicia o cadastro
+
+state PreenchendoDados {
+    PreenchendoDados : Usuário insere dados (nome, email, senha)
+    PreenchendoDados : Validação em tempo real
+}
+
+PreenchendoDados --> ValidandoDados: Usuário envia o formulário
+ValidandoDados: Servidor valida os dados
+
+ValidandoDados --> ErroDadosInvalidos: Dados inválidos ou email já em uso
+ErroDadosInvalidos: Retorna mensagem de erro
+ErroDadosInvalidos --> PreenchendoDados: Usuário corrige os dados
+
+ValidandoDados --> DadosValidos: Dados validados com sucesso
+DadosValidos --> SalvandoDados: Dados sendo salvos no banco de dados
+SalvandoDados --> CadastroFinalizado: Cadastro concluído
+CadastroFinalizado: Exibe mensagem de sucesso
+
+CadastroFinalizado --> [*]
+ErroDadosInvalidos --> [*]
+@enduml
