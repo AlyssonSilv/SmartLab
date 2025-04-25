@@ -1,5 +1,5 @@
 <?php
-require('conexao.php');
+require('conexao.php');// chama a conexão com o banco de dados
 ?>
 
 <div class="card-header">
