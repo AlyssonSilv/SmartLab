@@ -77,12 +77,15 @@ require('conexao.php');
                         <?php
                     }
                 } else {
+                    
                     echo "<tr><td colspan='5'>Nenhuma reserva ativa encontrada.</td></tr>";
                 }
             } else {
+
                 echo "<tr><td colspan='5'>Nenhuma reserva ativa.</td></tr>";
             }
         } else {
+
             echo "<tr><td colspan='5'>Erro ao buscar reservas.</td></tr>";
         }
         ?>
