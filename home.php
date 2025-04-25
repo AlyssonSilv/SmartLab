@@ -43,8 +43,8 @@ include('protect.php');
                 case "agenda":
                   include('agenda.php');
                   break;
-                case "reserva":  // Adicionando o caso para a página de inserção de reserva
-                  include('reserva.php');  // Nome do arquivo PHP da página de reservaa
+                case "reserva":  // Adicionando o caso para a página de inserção de reserva teste
+                  include('reserva.php');  // Nome do arquivo PHP da página de reservaa 
                   break;
                 case "perifericos-listar":
                   include('periferico-listar.php');
